@@ -144,6 +144,5 @@ pytest tests/mobile/test_mobile_login.py -v --alluredir=reports/
 **Suhendar**  
 Quality Assurance Automation Engineer  
 📧 [myns.suhendar@gmail.com](mailto:myns.suhendar@gmail.com)  
-🔗 [GitHub Repository](https://github.com/hendar-suhendar/automation_esuite_ework)
 
 ---
