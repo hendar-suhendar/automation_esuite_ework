@@ -1,64 +1,72 @@
-automation_esuite_ework/
-│
-├── features/ # BDD feature files (Gherkin)
-│ ├── web_login.feature
-│ └── mobile_login.feature
-│
-├── locators/ # Element locators
-│ ├── web/
-│ │ ├── login_locators.py
-│ │ └── create_company_locators.py
-│ └── mobile/
-│ └── login_locators.py
-│
-├── pages/ # Page Object Model
-│ ├── web/
-│ │ ├── login_page.py
-│ │ └── create_company_page.py
-│ └── mobile/
-│ └── login_page.py
-│
-├── tests/ # Step definitions & test runners
-│ ├── web/
-│ │ ├── test_login.py
-│ │ └── test_create_company.py
-│ └── mobile/
-│ └── test_mobile_login.py
-│
-├── reports/ # Allure reports
-├── conftest.py # Fixtures and base configuration
-├── pytest.ini # Pytest settings
-├── requirements.txt # Dependencies
-└── README.md # Documentation
+# Automation eSuite eWork
 
+Framework automation testing untuk **eSuite eWork** menggunakan **Python, Selenium, Appium, dan Pytest-BDD (Cucumber style)**.  
+Mendukung pengujian **Web** dan **Mobile**, serta menghasilkan **Allure Report** dengan screenshot hasil test.
 
 ---
 
-## Installation
+##Struktur Folder
 
-1. Clone repository:
+```
+automation_esuite_ework/
+├── features/
+│   ├── web_login.feature
+│   ├── web_create_new_company.feature
+│   └── mobile_login.feature
+│
+├── locators/
+│   └── web/
+│       ├── login_locators.py
+│       └── create_company_locators.py
+│
+├── pages/
+│   └── web/
+│       ├── login_page.py
+│       └── create_company_page.py
+│
+├── tests/
+│   ├── web/
+│   │   ├── test_login.py
+│   │   └── test_create_company.py
+│   └── mobile/
+│       └── test_mobile_login.py
+│
+├── config/
+│   └── conftest.py
+│
+├── reports/
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Instalasi
+
+1. **Clone Repository**
    ```bash
-   git clone https://github.com/yourusername/automation_esuite_ework.git
+   git clone https://github.com/hendar-suhendar/automation_esuite_ework.git
    cd automation_esuite_ework
+   ```
 
+2. **Buat Virtual Environment (opsional)**
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate
+   ```
 
-Buat virtual environment:
+3. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-python -m venv venv
-venv\Scripts\activate
+---
 
+## Example: Web Login Test
 
-Install dependencies:
-
-pip install -r requirements.txt
-
-
-(Opsional) Install Allure Command Line:
-
-scoop install allure   # untuk Windows
-
-Example: Web Login Test
-Feature File (features/web_login.feature)
+### **Feature File**
+`features/web_login.feature`
+```gherkin
 Feature: eSuite Web Login
 
   Scenario Outline: Login with valid credentials
@@ -69,17 +77,28 @@ Feature: eSuite Web Login
     Then I should see the eSuite dashboard
 
     Examples:
-      | email                      | password          |
-      | sakhie.suhendar@gmail.com  | myF@milY#ESuite  |
+      | email                    | password          |
+      | myns.suhendar@gmail.com  | ABCkdjieiA12@@#  |
+      | sakhie.suhendar@gmail.com| ABCkdjieiA12@@#  |
+```
 
-Run Test
+### **Run Test**
+```bash
 pytest tests/web/test_login.py -v --alluredir=reports/
+```
 
-Generate Report
+### **Generate Report**
+```bash
 allure serve reports/
+```
 
-Example: Mobile Login Test
-Feature File (features/mobile_login.feature)
+---
+
+## Example: Mobile Login Test
+
+### **Feature File**
+`features/mobile_login.feature`
+```gherkin
 Feature: eSuite Mobile Login
 
   Scenario Outline: Login with valid credentials
@@ -90,26 +109,41 @@ Feature: eSuite Mobile Login
     Then I should see the dashboard screen
 
     Examples:
-      | email                      | password          |
-      | sakhie.suhendar@gmail.com  | myF@milY#ESuite  |
+      | email                    | password          |
+      | myns.suhendar@gmail.com  | ABCkdjieiA12@@#  |
+```
 
-Run Test
-
-Pastikan Appium server sudah berjalan:
-
+### **Run Test**
+Pastikan **Appium server** sudah berjalan terlebih dahulu:
+```bash
 appium
+```
+
+Lalu jalankan test:
+```bash
 pytest tests/mobile/test_mobile_login.py -v --alluredir=reports/
+```
 
-How It Works
+---
 
-Feature File (.feature) → berisi skenario test menggunakan Gherkin.
+## How It Works
 
-Step Definition (.py) → menghubungkan langkah-langkah Gherkin ke kode Python.
+| Komponen | Deskripsi |
+|-----------|------------|
+| **Feature File (.feature)** | Berisi skenario pengujian dengan format Gherkin (Given-When-Then). |
+| **Step Definition (.py)** | Menghubungkan langkah-langkah Gherkin dengan kode Python. |
+| **Page Object (.py)** | Mendefinisikan aksi di halaman seperti klik, input, atau verifikasi. |
+| **Locator (.py)** | Menyimpan selector (By.ID, By.XPATH, By.CSS_SELECTOR). |
+| **conftest.py** | Mengatur driver, konfigurasi, dan Base URL. |
+| **Allure Report** | Menampilkan hasil pengujian lengkap dengan screenshot. |
 
-Page Object (.py) → mendefinisikan aksi di halaman (klik, input, dll).
+---
 
-Locator (.py) → menyimpan selector elemen halaman.
+## 👨‍💻 Maintainer
 
-conftest.py → mengatur driver, konfigurasi, dan base URL.
+**Suhendar**  
+Quality Assurance Automation Engineer  
+📧 [myns.suhendar@gmail.com](mailto:myns.suhendar@gmail.com)  
+🔗 [GitHub Repository](https://github.com/hendar-suhendar/automation_esuite_ework)
 
-Allure Report → menampilkan hasil test lengkap dengan screenshot.
+---
