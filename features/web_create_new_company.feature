@@ -19,5 +19,5 @@ Feature: eSuite Web Create New Company
 
     Examples:
       | email                      | password            | company_name       | company_address         | company_type |
-      | fans.suhendar@gmail.com     | F@r4hN0r1ff@t!35   | PT. Unique Person  | Jl. Sudirman No. 1      | Private      |
+      | fans.suhendar@gmail.com     | QWERTYUIOP1!@#$%^&*()   | PT. Unique Person  | Jl. Sudirman No. 1      | Private      |
       | sakhie.suhendar@gmail.com   | myF@milY#ESuite    | CV. Test Company   | Jl. Gatot Subroto No. 5 | Public       |
